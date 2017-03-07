@@ -104,5 +104,8 @@ public class MySQLAccess {
                 	System.out.println(e.getMessage());
                 }
         }
+        
+        // HERE COMES THE QUERIES!!! 
+        
 
 }
