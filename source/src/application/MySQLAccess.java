@@ -21,7 +21,7 @@ public class MySQLAccess {
                         Class.forName("com.mysql.jdbc.Driver");
                         // Setup the connection with the DB
                         String connectionURL = "jdbc:mysql://localhost:3306/project?useSSL=false";
-                        connect = DriverManager.getConnection(connectionURL, "root", "qppq2002");
+                        connect = DriverManager.getConnection(connectionURL, "root", "passord");
 
                         // Statements allow to issue SQL queries to the database
                         statement = connect.createStatement();
