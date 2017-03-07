@@ -101,7 +101,7 @@ public class MySQLAccess {
                                 connect.close();
                         }
                 } catch (Exception e) {
-
+                	System.out.println(e.getMessage());
                 }
         }
 
