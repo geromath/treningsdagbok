@@ -29,15 +29,15 @@ public class MySQLAccess {
                         // Result set get the result of the SQL query
                         resultSet = statement.executeQuery("select * from project.ovelse");
                         writeResultSet(resultSet);
-
+                       
                         // PreparedStatements can use variables and are more efficient
                         preparedStatement = connect.prepareStatement("insert into  project.ovelse values (default, ?, ?)");
                         // Parameters start with 1
-                        preparedStatement.setString(1, "Svømming");
-                        preparedStatement.setString(2, "prøve å ikke synke.");
+                        preparedStatement.setString(1, "Test 2");
+                        preparedStatement.setString(2, "Dette er også en liten test sak ting.");
                         preparedStatement.executeUpdate();
 
-                        preparedStatement = connect.prepareStatement("SELECT navn, beskrivelse OVELSE from project.ovelse");
+                        preparedStatement = connect.prepareStatement("SELECT navn, beskrivelse from project.ovelse");
                         resultSet = preparedStatement.executeQuery();
                         writeResultSet(resultSet);
 
@@ -78,6 +78,10 @@ public class MySQLAccess {
                         // also possible to get the columns via the column number
                         // which starts at 1
                         // e.g. resultSet.getSTring(2);
+                	String navn = resultSet.getString("navn");
+                    String beskrivelse = resultSet.getString("beskrivelse");
+                    System.out.println("Navn: " + navn);
+                    System.out.println(beskrivelse);
                 	resultSet.getString(1);
                 }
         }
