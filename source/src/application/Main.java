@@ -32,12 +32,12 @@ public class Main extends Application {
         
         
         HashMap<Integer, String> stringMap = new HashMap<Integer, String>();
-        stringMap.put(1, "NAVNTEST");
-        stringMap.put(2, "BESKRIVELSETEST");
+        stringMap.put(1, "testtest");
+        stringMap.put(2, "besktest");
         
         HashMap<Integer, Integer> intMap = new HashMap<Integer, Integer>();
         
-        	
+        sql.writeDataBase(stringMap, intMap, null, null, null, "ovelse", true);	
         
         sql.readDataBase("ovelse");
         

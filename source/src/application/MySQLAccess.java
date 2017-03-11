@@ -69,8 +69,6 @@ public class MySQLAccess {
         	return parameters;
         }
         
-        // possible need to add doubleMap, timeMap as parameters
-        
         public void writeDataBase(HashMap<Integer, String> stringMap, HashMap<Integer, Integer> intMap,
         		HashMap<Integer, Double> doubleMap, HashMap<Integer, Date> dateMap, HashMap<Integer, Time> timeMap, 
         		String tableName, boolean hasDefault) throws Exception {
@@ -90,37 +88,46 @@ public class MySQLAccess {
                 String stringQuery = getStringQuery(tableName, hasDefault, numberOfParameters);
                 preparedStatement = connect.prepareStatement(stringQuery);
                 
-                
-                for (HashMap.Entry<Integer, String> entry : stringMap.entrySet()) {
-                    Integer key = entry.getKey();
-                    String value = entry.getValue();
-                    preparedStatement.setString(key, value);
+                if (stringMap != null){
+                    for (HashMap.Entry<Integer, String> entry : stringMap.entrySet()) {
+                        Integer key = entry.getKey();
+                        String value = entry.getValue();
+                        preparedStatement.setString(key, value);
+                    }
                 }
 
-                for (HashMap.Entry<Integer, Integer> entry : intMap.entrySet()) {
-                    Integer key = entry.getKey();
-                    Integer value = entry.getValue();
-                    preparedStatement.setInt(key, value);
+                if (intMap != null){
+                    for (HashMap.Entry<Integer, Integer> entry : intMap.entrySet()) {
+                        Integer key = entry.getKey();
+                        Integer value = entry.getValue();
+                        preparedStatement.setInt(key, value);
+                    }
                 }
                 
-                for (HashMap.Entry<Integer, Double> entry : doubleMap.entrySet()) {
-                    Integer key = entry.getKey();
-                    Double value = entry.getValue();
-                    preparedStatement.setDouble(key, value);
+                if (doubleMap != null){
+                    for (HashMap.Entry<Integer, Double> entry : doubleMap.entrySet()) {
+                        Integer key = entry.getKey();
+                        Double value = entry.getValue();
+                        preparedStatement.setDouble(key, value);
+                    }
                 }
                 
-                for (HashMap.Entry<Integer, Date> entry : dateMap.entrySet()) {
-                    Integer key = entry.getKey();
-                    Date value = entry.getValue();
-                    preparedStatement.setDate(key, value);
+                if (dateMap != null){
+                    for (HashMap.Entry<Integer, Date> entry : dateMap.entrySet()) {
+                        Integer key = entry.getKey();
+                        Date value = entry.getValue();
+                        preparedStatement.setDate(key, value);
+                    }
                 }
                 
-                for (HashMap.Entry<Integer, Time> entry : timeMap.entrySet()) {
-                    Integer key = entry.getKey();
-                    Time value = entry.getValue();
-                    preparedStatement.setTime(key, value);
+
+                if (timeMap != null){
+                    for (HashMap.Entry<Integer, Time> entry : timeMap.entrySet()) {
+                        Integer key = entry.getKey();
+                        Time value = entry.getValue();
+                        preparedStatement.setTime(key, value);
+                    }
                 }
-                
 
                 preparedStatement.executeUpdate();
 
