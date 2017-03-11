@@ -21,32 +21,28 @@ public class MySQLAccess {
                         Class.forName("com.mysql.jdbc.Driver");
                         // Setup the connection with the DB
                         String connectionURL = "jdbc:mysql://localhost:3306/project?useSSL=false";
-                        connect = DriverManager.getConnection(connectionURL, "root", "passord");
+                        connect = DriverManager.getConnection(connectionURL, "root", "qppq2002");
 
                         // Statements allow to issue SQL queries to the database
                         statement = connect.createStatement();
-                        
-                        // Result set get the result of the SQL query
-                        resultSet = statement.executeQuery("select * from project.ovelse");
-                        writeResultSet(resultSet);
-                       
-                        // PreparedStatements can use variables and are more efficient
+                     
+                        // OPPDATERE DATABASEN
                         preparedStatement = connect.prepareStatement("insert into  project.ovelse values (default, ?, ?)");
-                        // Parameters start with 1
-                        preparedStatement.setString(1, "Test 2");
-                        preparedStatement.setString(2, "Dette er også en liten test sak ting.");
+                        preparedStatement.setString(1, "Svømming"); // 1 indexering...
+                        preparedStatement.setString(2, "Svømming i pirbadet");
                         preparedStatement.executeUpdate();
 
+                        // SELECT STATEMENT
                         preparedStatement = connect.prepareStatement("SELECT navn, beskrivelse from project.ovelse");
                         resultSet = preparedStatement.executeQuery();
                         writeResultSet(resultSet);
 
-                        /* Remove again the insert comment
+                        // SLETTER DET JEG TIDLIGERE HAR SATT INN
                         preparedStatement = connect
-                        .prepareStatement("delete from project.ovelse where myuser= ? ; ");
-                        preparedStatement.setString(1, "Test");
+                        .prepareStatement("delete from project.ovelse where navn=? ; ");
+                        preparedStatement.setString(1, "Svømming");
                         preparedStatement.executeUpdate();
-						*/
+						
                         resultSet = statement
                         .executeQuery("select * from project.ovelse");
                         writeMetaData(resultSet);
@@ -60,7 +56,7 @@ public class MySQLAccess {
         }
 
         private void writeMetaData(ResultSet resultSet) throws SQLException {
-                //         Now get some metadata from the database
+                // Now get some metadata from the database
                 // Result set get the result of the SQL query
 
                 System.out.println("The columns in the table are: ");
@@ -85,6 +81,10 @@ public class MySQLAccess {
                 	resultSet.getString(1);
                 }
         }
+        
+        public void printHello(){
+        	System.out.println("Hello, World!");
+        }
 
         // You need to close the resultSet
         private void close() {
@@ -104,8 +104,4 @@ public class MySQLAccess {
                 	System.out.println(e.getMessage());
                 }
         }
-        
-        // HERE COMES THE QUERIES!!! 
-        
-
 }
