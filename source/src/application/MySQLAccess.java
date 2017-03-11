@@ -146,25 +146,23 @@ public class MySQLAccess {
         
         public void readDataBase(String tableName) throws Exception {
                 try {
-                        // This will load the MySQL driver, each DB has its own driver
-                        Class.forName("com.mysql.jdbc.Driver");
-                        // Setup the connection with the DB
-                        String connectionURL = "jdbc:mysql://localhost:3306/project?useSSL=false";
-                        connect = DriverManager.getConnection(connectionURL, "root", "passord");
+                    // This will load the MySQL driver, each DB has its own driver
+                    Class.forName("com.mysql.jdbc.Driver");
+                    // Setup the connection with the DB
+                    String connectionURL = "jdbc:mysql://localhost:3306/project?useSSL=false";
+                    connect = DriverManager.getConnection(connectionURL, "root", "qppq2002");
 
-                        // Statements allow to issue SQL queries to the database
-                        statement = connect.createStatement();
-                        resultSet = statement.executeQuery("select * from project." + tableName);
-                        writeMetaData(resultSet);
-                        
-                        System.out.println("");
-                        
-                        preparedStatement = connect.prepareStatement("SELECT * from project." + tableName);
-                        resultSet = preparedStatement.executeQuery();
-                        writeResultSet(resultSet);
+                    // Statements allow to issue SQL queries to the database
+                    statement = connect.createStatement();
 
-
-
+                    resultSet = statement.executeQuery("select * from project." + tableName);
+                    writeMetaData(resultSet);
+                    
+                    System.out.println("");
+                    
+                    preparedStatement = connect.prepareStatement("SELECT * from project." + tableName);
+                    resultSet = preparedStatement.executeQuery();
+                    writeResultSet(resultSet);
                 } catch (Exception e) {
                         throw e;
                 } finally {
@@ -173,8 +171,8 @@ public class MySQLAccess {
 
         }
 
-        public void writeMetaData(ResultSet resultSet) throws SQLException {
-                //         Now get some metadata from the database
+        private void writeMetaData(ResultSet resultSet) throws SQLException {
+                // Now get some metadata from the database
                 // Result set get the result of the SQL query
 
                 System.out.println("Table: " + resultSet.getMetaData().getTableName(1));
@@ -223,9 +221,6 @@ public class MySQLAccess {
 
                 }
         }
-        
-        
-        
 
         // You need to close the resultSet
         private void close() {
@@ -245,8 +240,4 @@ public class MySQLAccess {
                 	System.out.println(e.getMessage());
                 }
         }
-        
-        // HERE COMES THE QUERIES!!! 
-        
-
 }
