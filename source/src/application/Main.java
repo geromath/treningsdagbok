@@ -1,5 +1,8 @@
 package application;
 	
+import java.util.ArrayList;
+import java.util.HashMap;
+
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -24,7 +27,22 @@ public class Main extends Application {
 	
 	public static void main(String[] args) throws Exception {
 		MySQLAccess sql = new MySQLAccess();
-        sql.readDataBase();
-		launch(args);
+        sql.readDataBase("ovelse");
+        
+        
+        
+        HashMap<Integer, String> stringMap = new HashMap<Integer, String>();
+        stringMap.put(1, "NAVNTEST");
+        stringMap.put(2, "BESKRIVELSETEST");
+        
+        HashMap<Integer, Integer> intMap = new HashMap<Integer, Integer>();
+        
+        	
+        
+        sql.readDataBase("ovelse");
+        
+//        sql.writeDataBase("Testøvelse", "Dette er en test");
+//        sql.readDataBase();
+		// launch(args);
 	}
 }

@@ -13,11 +13,13 @@ CREATE TABLE `project`.`mal` (
   `oktID` INT NOT NULL,
   `ovelseID` INT NOT NULL,
   `varighet` TIME NULL, 
-  CONSTRAINT FOREIGN KEY (`fk_mal_okt_oktID`)
+  CONSTRAINT `fk_mal_okt_oktID`
+	FOREIGN KEY (`oktID`)
     REFERENCES `project`.`okt` (`oktID`)
     ON DELETE CASCADE
     ON UPDATE NO ACTION, 
-  CONSTRAINT FOREIGN KEY (`fk_mal_ovelse_ovelseID`)
+  CONSTRAINT `fk_mal_ovelse_ovelseID`
+	FOREIGN KEY (`ovelseID`)
     REFERENCES `project`.`ovelse` (`ovelseID`)
     ON DELETE CASCADE
     ON UPDATE NO ACTION);
@@ -27,16 +29,18 @@ CREATE TABLE `project`.`malsetning` (
   `ovelseID` INT NOT NULL,
   `intensitet` DOUBLE NOT NULL,
   `varighet` DOUBLE NOT NULL,
-  CONSTRAINT FOREIGN KEY (`fk_ovelseID`)
+  CONSTRAINT `fk_ovelseID`
+	FOREIGN KEY (`ovelseID`)
     REFERENCES `project`.`ovelse` (`ovelseID`)
     ON DELETE CASCADE
     ON UPDATE NO ACTION);
 
-CREATE TABLE ‘project’.’maling’ (
-  ‘oktID’ INT NOT NULL,
-  ‘tidspunkt’ TIME NOT NULL,
-  PRIMARY KEY (‘tidspunkt’), 
-  CONSTRAINT FOREIGN KEY (`fk_maling_okt_oktID`)
+CREATE TABLE `project`.`maling` (
+  `oktID` INT NOT NULL,
+  `tidspunkt`TIME NOT NULL,
+  PRIMARY KEY (`tidspunkt`), 
+  CONSTRAINT `fk_maling_okt_oktID`
+	FOREIGN KEY (`oktID`)
     REFERENCES `project`.`okt` (`oktID`)
     ON DELETE CASCADE
     ON UPDATE NO ACTION);
@@ -48,11 +52,13 @@ CREATE TABLE `project`.`styrke` (
   `vekt` INT NULL,
   `repitisjon` INT NULL,
   `sett` INT NULL, 
-  CONSTRAINT FOREIGN KEY (`fk_styrkemaling_maling_tidspunkt`)
+  CONSTRAINT `fk_styrkemaling_maling_tidspunkt`
+  FOREIGN KEY (`tidspunkt`)
     REFERENCES `project`.`maling` (`tidspunkt`)
     ON DELETE CASCADE
     ON UPDATE NO ACTION,
-  CONSTRAINT FOREIGN KEY (`fk_styrkemaling_maling_oktID`)
+  CONSTRAINT `fk_styrkemaling_maling_oktID`
+  FOREIGN KEY (`oktID`)
     REFERENCES `project`.`okt` (`oktID`)
     ON DELETE CASCADE
     ON UPDATE NO ACTION);
@@ -64,11 +70,13 @@ CREATE TABLE `project`.`styrke` (
   `vekt` INT NULL,
   `repitisjon` INT NULL,
   `sett` INT NULL, 
-  CONSTRAINT FOREIGN KEY (`fk_svom_maling_tidspunkt`)
+  CONSTRAINT `fk_svom_maling_tidspunkt`
+  FOREIGN KEY (`tidspunkt`)
     REFERENCES `project`.`maling` (`tidspunkt`)
     ON DELETE CASCADE
     ON UPDATE NO ACTION,
-  CONSTRAINT FOREIGN KEY (`fk_svom_maling_oktID`)
+  CONSTRAINT `fk_svom_maling_oktID`
+  FOREIGN KEY (`oktID`)
     REFERENCES `project`.`okt` (`oktID`)
     ON DELETE CASCADE
     ON UPDATE NO ACTION);
@@ -82,11 +90,13 @@ CREATE TABLE `project`.`lop` (
   `hastighet` DOUBLE NULL,
   `lengde` INT NULL,
   `puls` INT NULL,
-  CONSTRAINT FOREIGN KEY (`fk_lop_maling_tidspunkt`)
+  CONSTRAINT `fk_lop_maling_tidspunkt`
+  FOREIGN KEY (`tidspunkt`)
     REFERENCES `project`.`maling` (`tidspunkt`)
     ON DELETE CASCADE
     ON UPDATE NO ACTION,
-  CONSTRAINT FOREIGN KEY (`fk_lop_maling_oktID`)
+  CONSTRAINT `fk_lop_maling_oktID`
+  FOREIGN KEY (`oktID`)
     REFERENCES `project`.`okt` (`oktID`)
     ON DELETE CASCADE
     ON UPDATE NO ACTION);
@@ -101,11 +111,13 @@ CREATE TABLE `project`.`sykkel` (
   `lengde` DOUBLE NULL,
   `hastighet` DOUBLE NULL,
   `puls` INT NULL,
-  CONSTRAINT FOREIGN KEY (`fk_sykkel_maling_tidspunkt`)
+  CONSTRAINT `fk_sykkel_maling_tidspunkt`
+  FOREIGN KEY (`tidspunkt`)
     REFERENCES `project`.`maling` (`tidspunkt`)
     ON DELETE CASCADE
     ON UPDATE NO ACTION,
-  CONSTRAINT FOREIGN KEY (`fk_sykkel_maling_oktID`)
+  CONSTRAINT `fk_sykkel_maling_oktID`
+  FOREIGN KEY (`oktID`)
     REFERENCES `project`.`okt` (`oktID`)
     ON DELETE CASCADE
     ON UPDATE NO ACTION);
@@ -116,11 +128,13 @@ CREATE TABLE `project`.`innemaling` (
   `oktID` INT NOT NULL,
   `ventilasjon` DOUBLE NULL,
   `antalltilskuere` INT NULL, 
-  CONSTRAINT FOREIGN KEY (`fk_innemaling_maling_tidspunkt`)
+  CONSTRAINT `fk_innemaling_maling_tidspunkt`
+  FOREIGN KEY (`tidspunkt`)
     REFERENCES `project`.`maling` (`tidspunkt`)
     ON DELETE CASCADE
     ON UPDATE NO ACTION,
-  CONSTRAINT FOREIGN KEY (`fk_innemaling_maling_oktID`)
+  CONSTRAINT `fk_innemaling_maling_oktID`
+  FOREIGN KEY (`oktID`)
     REFERENCES `project`.`okt` (`oktID`)
     ON DELETE CASCADE
     ON UPDATE NO ACTION);
@@ -132,11 +146,13 @@ CREATE TABLE `project`.`utemaling` (
   `vaertype` VARCHAR(45) NULL,
   `forhold` VARCHAR(45)  NULL,
   `temp` DOUBLE NULL, 
-  CONSTRAINT FOREIGN KEY (`fk_utemaling_maling_tidspunkt`)
+  CONSTRAINT `fk_utemaling_maling_tidspunkt`
+  FOREIGN KEY (`tidspunkt`)
     REFERENCES `project`.`maling` (`tidspunkt`)
     ON DELETE CASCADE
 	ON UPDATE NO ACTION,
-  CONSTRAINT FOREIGN KEY (`fk_utemaling_maling_oktID`)
+  CONSTRAINT `fk_utemaling_maling_oktID`
+  FOREIGN KEY (`oktID`)
     REFERENCES `project`.`okt` (`oktID`)
     ON DELETE CASCADE
     ON UPDATE NO ACTION);
@@ -146,11 +162,13 @@ CREATE TABLE `project`.`resultat` (
   `oktID` INT NOT NULL,
   `ovelseID` INT NOT NULL,
   `prestasjon` INT NOT NULL, 
-  CONSTRAINT FOREIGN KEY (`fk_resultat_okt_oktID`)
+  CONSTRAINT `fk_resultat_okt_ovelseID`
+  FOREIGN KEY (`ovelseID`)
     REFERENCES `project`.`ovelse` (`ovelseID`)
     ON DELETE CASCADE
     ON UPDATE NO ACTION,
-  CONSTRAINT FOREIGN KEY (`fk_resultat_okt_oktID`)
+  CONSTRAINT `fk_resultat_okt_oktID`
+  FOREIGN KEY (`oktID`)
     REFERENCES `project`.`okt` (`oktID`)
     ON DELETE CASCADE
     ON UPDATE NO ACTION);
@@ -169,8 +187,8 @@ CREATE TABLE `project`.`styrkeovelse` (
   `repetisjon` INT NULL,
   `sett` INT NULL,
   INDEX `ovelse_idx` (`ovelseID` ASC),
-  CONSTRAINT `ovelseID`
-    FOREIGN KEY (`fk_styrkeovelse_ovelse_ovelseID`)
+  CONSTRAINT `fk_styrkeovelse_ovelse_ovelseID`
+    FOREIGN KEY (`ovelseID`)
     REFERENCES `project`.`ovelse` (`ovelseID`)
     ON DELETE CASCADE
     ON UPDATE NO ACTION);
@@ -182,8 +200,8 @@ CREATE TABLE `project`.`utholdenhetsovelse` (
   `pulssone` INT NULL,
   `varighet` TIME,
   INDEX `ovelse_idx` (`ovelseID` ASC),
-  CONSTRAINT `ovelseID`
-    FOREIGN KEY (`fk_utholdenhetsovelse_ovelse_ovelseID`)
+  CONSTRAINT `fk_utholdenhetsovelse_ovelse_ovelseID`
+    FOREIGN KEY (`ovelseID`)
     REFERENCES `project`.`ovelse` (`ovelseID`)
     ON DELETE CASCADE
     ON UPDATE NO ACTION);
