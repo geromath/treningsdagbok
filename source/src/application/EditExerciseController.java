@@ -32,7 +32,6 @@ public class EditExerciseController {
 		String description = descriptionTextField.getText();
 		String choice = choiceTextField.getText();
 		System.out.println(name + description + choice);
-		mysql.printHello();
 	}
 	
 }
