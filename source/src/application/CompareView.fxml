@@ -1,8 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
 
-<AnchorPane xmlns:fx="http://javafx.com/fxml/1">
-	<!-- TODO Add Nodes -->
+
+<AnchorPane xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.111" fx:controller="application.CompareController">
+   <children>
+      <VBox prefHeight="200.0" prefWidth="100.0">
+         <children>
+            <Label text="Beste styrketrening:" />
+            <Label fx:id="BesteStyrkeLabel" layoutX="10.0" layoutY="10.0" text="..." />
+            <Label layoutX="10.0" layoutY="27.0" text="Varighet" />
+            <Label fx:id="BesteStyrkeVarighetLabel" layoutX="10.0" layoutY="27.0" text="..." />
+            <Label layoutX="10.0" layoutY="27.0" text="Beste utholdenhetstrening" />
+            <Label fx:id="BesteUtholdenhetLabel" layoutX="10.0" layoutY="27.0" text="..." />
+            <Label layoutX="10.0" layoutY="27.0" text="Varighet" />
+            <Label fx:id="BesteUtholdenhetVarighetLabel" layoutX="10.0" layoutY="27.0" text="..." />
+            <Label layoutX="10.0" layoutY="27.0" text="Lengde" />
+            <Label fx:id="BesteUtholdenhetLengdeLabel" layoutX="10.0" layoutY="27.0" text="..." />
+         </children>
+      </VBox>
+   </children>
 </AnchorPane>
-
