@@ -1,8 +1,5 @@
 package application;
 	
-import java.util.ArrayList;
-import java.util.HashMap;
-
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -13,7 +10,7 @@ public class Main extends Application {
 	@Override
 	public void start(Stage primaryStage) {
 		try {
-			Parent root = FXMLLoader.load(getClass().getResource("EditExerciseView.fxml"));
+			Parent root = FXMLLoader.load(getClass().getResource("AddActivityView.fxml"));
 			
 	        Scene scene = new Scene(root, 500, 800);
 	    
@@ -26,23 +23,23 @@ public class Main extends Application {
 	}
 	
 	public static void main(String[] args) throws Exception {
-		MySQLAccess sql = new MySQLAccess();
-        sql.readDataBase("ovelse");
+//		MySQLAccess sql = new MySQLAccess();
+//        sql.readDataBase("ovelse");
+//        
+//        
+//        
+//        HashMap<Integer, String> stringMap = new HashMap<Integer, String>();
+//        stringMap.put(1, "testtest");
+//        stringMap.put(2, "besktest");
+//        
+//        HashMap<Integer, Integer> intMap = new HashMap<Integer, Integer>();
+//        
+//        sql.writeDataBase(stringMap, intMap, null, null, null, "ovelse", true);	
+//        
+//        sql.readDataBase("ovelse");
         
-        
-        
-        HashMap<Integer, String> stringMap = new HashMap<Integer, String>();
-        stringMap.put(1, "testtest");
-        stringMap.put(2, "besktest");
-        
-        HashMap<Integer, Integer> intMap = new HashMap<Integer, Integer>();
-        
-        sql.writeDataBase(stringMap, intMap, null, null, null, "ovelse", true);	
-        
-        sql.readDataBase("ovelse");
-        
-//        sql.writeDataBase("Testøvelse", "Dette er en test");
-//        sql.readDataBase();
-		// launch(args);
+//      sql.writeDataBase("Testøvelse", "Dette er en test");
+//      sql.readDataBase();
+		launch(args);
 	}
 }

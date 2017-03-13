@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+
+
+<AnchorPane xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.111" fx:controller="application.AddActivityController">
+   <children>
+      <VBox prefHeight="269.0" prefWidth="160.0">
+         <children>
+            <Label prefHeight="17.0" prefWidth="130.0" text="Tidspunkt start" />
+            <TextField fx:id="TidspunktStartField" />
+            <Label layoutX="10.0" layoutY="10.0" prefHeight="17.0" prefWidth="130.0" text="Varighet" />
+            <TextField fx:id="VarighetField" />
+            <Label layoutX="10.0" layoutY="52.0" prefHeight="17.0" prefWidth="130.0" text="Kaloriforbruk" />
+            <TextField fx:id="KaloriforbrukField" layoutX="10.0" layoutY="69.0" />
+            <Label layoutX="10.0" layoutY="94.0" prefHeight="17.0" prefWidth="130.0" text="Notat" />
+            <TextField fx:id="NotatField" layoutX="10.0" layoutY="111.0" />
+            <Label layoutX="10.0" layoutY="136.0" prefHeight="17.0" prefWidth="130.0" text="Prestasjon" />
+            <TextField fx:id="PrestasjonField" layoutX="10.0" layoutY="153.0" />
+            <Label layoutX="10.0" layoutY="178.0" prefHeight="17.0" prefWidth="130.0" text="Form" />
+            <TextField fx:id="FormField" layoutX="10.0" layoutY="195.0" />
+            <Label layoutX="10.0" layoutY="220.0" prefHeight="17.0" prefWidth="145.0" text="Styrke eller utholdenhet?" />
+			<TextField fx:id="StyrkeOrUtholdenhet" layoutX="10.0" layoutY="195.0" />
+			<Label layoutX="10.0" layoutY="220.0" prefHeight="17.0" prefWidth="145.0" text="Øvelser" />
+			<TextField fx:id="Exercises" layoutX="10.0" layoutY="195.0" />
+            <Button fx:id="SubmitButton" mnemonicParsing="false" text="Submit" onAction="#handleSubmitButton" />
+         </children>
+      </VBox>
+   </children>
+</AnchorPane>
