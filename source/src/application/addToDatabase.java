@@ -78,6 +78,42 @@ public class addToDatabase {
 		
 	}
 	
+	public void addMalsetning(int ovelseID, double intensitet, Time varighet){
+
+	}
+	
+	public void addResultat(int ovelseID, int oktID, double prestasjon){
+		
+	}
+	
+	public void addMal(int oktID, int ovelseID, Time varighet){
+		
+	}
+	
+	public void addMalepunkt(int oktID, Time tidspunkt){
+		
+	}
+	
+	public void addUtemaling(String vaertype, double temperatur, String fore){
+		
+	}
+	
+	public void addSvomMalepunkt(int lengde, int takPerLengde, double hastighet){
+		
+	}
+	
+	public void addSykkelMalepunkt(double watt, double cadence, int puls, int GPS, double lengde, double hastighet){
+		
+	}
+	
+	public void addLopMalepunkt(int antallSkritt, int GPS, int puls, double lengde, double hastighet){
+		
+	}
+	
+	public void addStyrkeMalepunkt(int vekt, int repetisjon, int sett){
+		
+	}
+	
 	public static void main(String[] args) throws Exception {
 
 		addToDatabase db = new addToDatabase();
