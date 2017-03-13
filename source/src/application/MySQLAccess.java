@@ -13,6 +13,7 @@ import java.sql.Time;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+
 public class MySQLAccess {
 		private Connection connect = null;
         private Statement statement = null;
@@ -20,20 +21,81 @@ public class MySQLAccess {
         private ResultSet resultSet = null;
 
         
+        public int getPrimaryKey(String tableName) throws Exception {
+            try {
+                // This will load the MySQL driver, each DB has its own driver
+                Class.forName("com.mysql.jdbc.Driver");
+                // Setup the connection with the DB
+                String connectionURL = "jdbc:mysql://localhost:3306/project?useSSL=false";
+                connect = DriverManager.getConnection(connectionURL, "root", "passord");
+
+                // Statements allow to issue SQL queries to the database
+                statement = connect.createStatement();
+
+                resultSet = statement.executeQuery("select * from project." + tableName);
+
+            	int lastKey = 0;
+            	
+                while (resultSet.next()) {
+                	lastKey = resultSet.getInt(1);
+                }
+                
+            	return lastKey;
+
+            } catch (Exception e) {
+                    throw e;
+            } finally {
+                    close();
+            }
+            	
+
+    }
+        
+        public Time getPrimaryKey(String tableName, boolean isMalepunkt) throws Exception {
+            try {
+                // This will load the MySQL driver, each DB has its own driver
+                Class.forName("com.mysql.jdbc.Driver");
+                // Setup the connection with the DB
+                String connectionURL = "jdbc:mysql://localhost:3306/project?useSSL=false";
+                connect = DriverManager.getConnection(connectionURL, "root", "passord");
+
+                // Statements allow to issue SQL queries to the database
+                statement = connect.createStatement();
+
+                resultSet = statement.executeQuery("select * from project." + tableName);
+
+				Time lastKey = new Time(1); 
+            	
+                while (resultSet.next()) {
+                	lastKey = resultSet.getTime(1);
+                }
+                
+            	return lastKey;
+
+            } catch (Exception e) {
+                    throw e;
+            } finally {
+                    close();
+            }
+            	
+
+    }
+        
+        
         public String getStringQuery(String tableName, boolean hasDefault, int numberOfParameters){
             String stringQuery = "insert into  project." + tableName +" values (";
             
             if (hasDefault){
             	stringQuery += "default";
+                for (int i = 0; i < numberOfParameters; i++){
+                	stringQuery += ", ?";
+                }
             }
             else{
             	stringQuery += "?";
-            }
-
-
-            
-            for (int i = 0; i < numberOfParameters; i++){
-            	stringQuery += ", ?";
+                for (int i = 0; i < numberOfParameters - 1; i++){
+                	stringQuery += ", ?";
+                }
             }
             
             stringQuery += ")";
@@ -100,6 +162,7 @@ public class MySQLAccess {
                     for (HashMap.Entry<Integer, Integer> entry : intMap.entrySet()) {
                         Integer key = entry.getKey();
                         Integer value = entry.getValue();
+                        System.out.println("Key: " + key + ", value: " + value);
                         preparedStatement.setInt(key, value);
                     }
                 }
@@ -125,6 +188,7 @@ public class MySQLAccess {
                     for (HashMap.Entry<Integer, Time> entry : timeMap.entrySet()) {
                         Integer key = entry.getKey();
                         Time value = entry.getValue();
+                        System.out.println("Key: " + key + ", value: " + value);
                         preparedStatement.setTime(key, value);
                     }
                 }
@@ -156,12 +220,8 @@ public class MySQLAccess {
                     statement = connect.createStatement();
 
                     resultSet = statement.executeQuery("select * from project." + tableName);
+
                     writeMetaData(resultSet);
-                    
-                    System.out.println("");
-                    
-                    preparedStatement = connect.prepareStatement("SELECT * from project." + tableName);
-                    resultSet = preparedStatement.executeQuery();
                     writeResultSet(resultSet);
                 } catch (Exception e) {
                         throw e;
@@ -200,26 +260,22 @@ public class MySQLAccess {
 
         private void writeResultSet(ResultSet resultSet) throws SQLException {
                 // ResultSet is initially before the first data set
-                while (resultSet.next()) {
-                        // It is possible to get the columns via name
-                        // also possible to get the columns via the column number
-                        // which starts at 1
+        		
+        	ArrayList<String> colName = getMetaData(resultSet);
+        	int number_of_cols = colName.size();
+        	
+            while (resultSet.next()) {
+                    // It is possible to get the columns via name
+                    // also possible to get the columns via the column number
+                    // which starts at 1
 
-                	
-                	ArrayList<String> colName = getMetaData(resultSet);
-                	
-                	
-                	int number_of_cols = colName.size();
-                	
+            	for (int i = 0; i < number_of_cols; i++){
+            		System.out.print(resultSet.getString(colName.get(i)));
+            		System.out.print(" ");
+            	}
+            	System.out.println("");
 
-                	
-                	for (int i = 0; i < number_of_cols; i++){
-                		System.out.print(resultSet.getString(colName.get(i)));
-                		System.out.print(" ");
-                	}
-                	System.out.println("");
-
-                }
+            }
         }
 
         // You need to close the resultSet

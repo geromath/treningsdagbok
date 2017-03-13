@@ -23,20 +23,9 @@ public class Main extends Application {
 	}
 	
 	public static void main(String[] args) throws Exception {
-//		MySQLAccess sql = new MySQLAccess();
-//        sql.readDataBase("ovelse");
-//        
-//        
-//        
-//        HashMap<Integer, String> stringMap = new HashMap<Integer, String>();
-//        stringMap.put(1, "testtest");
-//        stringMap.put(2, "besktest");
-//        
-//        HashMap<Integer, Integer> intMap = new HashMap<Integer, Integer>();
-//        
-//        sql.writeDataBase(stringMap, intMap, null, null, null, "ovelse", true);	
-//        
-//        sql.readDataBase("ovelse");
+
+		MySQLAccess sql = new MySQLAccess();
+        sql.readDataBase("ovelse");
         
 //      sql.writeDataBase("Testøvelse", "Dette er en test");
 //      sql.readDataBase();
