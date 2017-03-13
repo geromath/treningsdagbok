@@ -74,12 +74,37 @@ public class addToDatabase {
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}
-		
+		}	
 	}
 	
-	public void addMalsetning(int ovelseID, double intensitet, Time varighet){
+	public void addMalsetning(int ovelseID, int intensitet, Time varighet){
+		
+		MySQLAccess sql = new MySQLAccess();
+		
+		HashMap<Integer, Integer> intMap = new HashMap<Integer, Integer>(); 
+        
+		Integer foreginKey = 0;
+		try {
+			foreginKey = sql.getPrimaryKey("ovelse");
+		} catch (Exception e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+		
+		intMap.put(1, foreginKey);
+		intMap.put(2, intensitet);
+		
+		HashMap<Integer, Time> timeMap = new HashMap<Integer, Time>();
+		timeMap.put(3, varighet);
+		
+		
 
+		try {
+			sql.writeDataBase(null, intMap, null, null, null, "styrkeovelse", false);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}	
 	}
 	
 	public void addResultat(int ovelseID, int oktID, double prestasjon){
