@@ -26,15 +26,15 @@ public class addToDatabase {
 		
 		HashMap<Integer, Integer> intMap = new HashMap<Integer, Integer>(); 
         
-		Integer foreginKey = 0;
+		Integer foreignKey = 0;
 		try {
-			foreginKey = sql.getPrimaryKey("ovelse");
+			foreignKey = sql.getPrimaryKey("ovelse");
 		} catch (Exception e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
 		
-		intMap.put(1, foreginKey);
+		intMap.put(1, foreignKey);
 		intMap.put(2, hastighet);
 		intMap.put(3, pulssone);
 
