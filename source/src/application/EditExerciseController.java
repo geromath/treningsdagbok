@@ -63,16 +63,20 @@ public class EditExerciseController {
 	private Button button;
 	
 	public void handleButtonPress(){
+		String name = nameTextField.getText();
+		String description = descriptionTextField.getText();
+//		Spørring for øvelse
+		
 		if(choiceTextField.getText().equals("styrke")){
-			String bel = belastningTextField.getText();
-			String rep = repitisjonerTextField.getText();
-			String set = settTextField.getText();
+			int bel = Integer.parseInt(belastningTextField.getText());
+			int rep = Integer.parseInt(repitisjonerTextField.getText());
+			int set = Integer.parseInt(settTextField.getText());
 //			Spørring for styrkeøvelse
 		}
 		else if (choiceTextField.getText().equals("utholdenhet")) {
-			String hast = hastighetTextField.getText();
-			String puls = pulssoneTextField.getText();
-			String varig = varighetTextField.getText();
+			int hast = Integer.parseInt(hastighetTextField.getText());
+			int puls = Integer.parseInt(pulssoneTextField.getText());
+			int varig = Integer.parseInt(varighetTextField.getText());
 //			Spørring for utholdenhet her
 		}
 		else {
