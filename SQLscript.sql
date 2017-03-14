@@ -143,8 +143,8 @@ CREATE TABLE `treningsdagbok`.`innemaling` (
 
 
 CREATE TABLE `treningsdagbok`.`utemaling` (
-  `tidspunkt` TIME NOT NULL,
   `oktID` INT NOT NULL,
+  `tidspunkt` TIME NOT NULL,
   `vaertype` VARCHAR(45) NULL,
   `forhold` VARCHAR(45)  NULL,
   `temp` DOUBLE NULL, 
