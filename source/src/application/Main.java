@@ -24,8 +24,8 @@ public class Main extends Application {
 	
 	public static void main(String[] args) throws Exception {
 
-		MySQLAccess sql = new MySQLAccess();
-        sql.readDataBase("ovelse");
+//		MySQLAccess sql = new MySQLAccess();
+//        sql.readDataBase("ovelse");
         
 //      sql.writeDataBase("Testøvelse", "Dette er en test");
 //      sql.readDataBase();
