@@ -47,7 +47,7 @@ public class AddActivityController {
 		String tidspunktStart, varighet, kaloriforbruk, notat, prestasjon, form, styrkeOrUtholdenhet;
 		String[] exercises = Exercises.getText().split(", ");
 		for (String ex : exercises) {
-			// Hent ut en og en string
+			// Henter ut alle øvelser herfra
 		}
 		tidspunktStart = TidspunktStartField.getText();
 		varighet = VarighetField.getText();

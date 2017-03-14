@@ -18,7 +18,7 @@ public class LogController {
 		// Need to have, don't touch
 		@FXML
 		private void initialize(){
-//			Spørringer her og ... 
+//			Spørringer her og ... For antall økter og antall timer
 			antallOkter.setText("This is an example");
 			antallTimer.setText("This is another example");
 		}

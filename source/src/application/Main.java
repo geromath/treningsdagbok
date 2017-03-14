@@ -10,7 +10,7 @@ public class Main extends Application {
 	@Override
 	public void start(Stage primaryStage) {
 		try {
-			Parent root = FXMLLoader.load(getClass().getResource("EditExerciseView.fxml"));
+			Parent root = FXMLLoader.load(getClass().getResource("AddActivityView.fxml"));
 			
 	        Scene scene = new Scene(root, 500, 800);
 	    
