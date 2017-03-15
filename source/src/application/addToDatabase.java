@@ -261,7 +261,7 @@ public class addToDatabase {
 		}
 		
 		intMap.put(1, foreignKey1);
-		intMap.put(4, antallTilskuere)
+		intMap.put(4, antallTilskuere);
 
 		
 		HashMap<Integer, Time> timeMap = new HashMap<Integer, Time>();
