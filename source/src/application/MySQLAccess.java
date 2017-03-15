@@ -1,7 +1,5 @@
 package application;
 
-
-
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.DriverManager;
@@ -26,13 +24,13 @@ public class MySQLAccess {
                 // This will load the MySQL driver, each DB has its own driver
                 Class.forName("com.mysql.jdbc.Driver");
                 // Setup the connection with the DB
-                String connectionURL = "jdbc:mysql://localhost:3306/project?useSSL=false";
+                String connectionURL = "jdbc:mysql://localhost:3306/treningsdagbok?useSSL=false";
                 connect = DriverManager.getConnection(connectionURL, "root", "passord");
 
                 // Statements allow to issue SQL queries to the database
                 statement = connect.createStatement();
 
-                resultSet = statement.executeQuery("select * from project." + tableName);
+                resultSet = statement.executeQuery("select * from treningsdagbok." + tableName);
 
             	int lastKey = 0;
             	
@@ -56,13 +54,13 @@ public class MySQLAccess {
                 // This will load the MySQL driver, each DB has its own driver
                 Class.forName("com.mysql.jdbc.Driver");
                 // Setup the connection with the DB
-                String connectionURL = "jdbc:mysql://localhost:3306/project?useSSL=false";
+                String connectionURL = "jdbc:mysql://localhost:3306/treningsdagbok?useSSL=false";
                 connect = DriverManager.getConnection(connectionURL, "root", "passord");
 
                 // Statements allow to issue SQL queries to the database
                 statement = connect.createStatement();
 
-                resultSet = statement.executeQuery("select * from project." + tableName);
+                resultSet = statement.executeQuery("select * from treningsdagbok." + tableName);
 
 				Time lastKey = new Time(1); 
             	
@@ -83,7 +81,7 @@ public class MySQLAccess {
         
         
         public String getStringQuery(String tableName, boolean hasDefault, int numberOfParameters){
-            String stringQuery = "insert into  project." + tableName +" values (";
+            String stringQuery = "insert into  treningsdagbok." + tableName +" values (";
             
             if (hasDefault){
             	stringQuery += "default";
@@ -139,7 +137,7 @@ public class MySQLAccess {
                 // This will load the MySQL driver, each DB has its own driver
                 Class.forName("com.mysql.jdbc.Driver");
                 // Setup the connection with the DB
-                String connectionURL = "jdbc:mysql://localhost:3306/project?useSSL=false";
+                String connectionURL = "jdbc:mysql://localhost:3306/treningsdagbok?useSSL=false";
                 connect = DriverManager.getConnection(connectionURL, "root", "passord");
 
                 // Statements allow to issue SQL queries to the database
@@ -213,13 +211,13 @@ public class MySQLAccess {
                     // This will load the MySQL driver, each DB has its own driver
                     Class.forName("com.mysql.jdbc.Driver");
                     // Setup the connection with the DB
-                    String connectionURL = "jdbc:mysql://localhost:3306/project?useSSL=false";
+                    String connectionURL = "jdbc:mysql://localhost:3306/treningsdagbok?useSSL=false";
                     connect = DriverManager.getConnection(connectionURL, "root", "passord");
 
                     // Statements allow to issue SQL queries to the database
                     statement = connect.createStatement();
 
-                    resultSet = statement.executeQuery("select * from project." + tableName);
+                    resultSet = statement.executeQuery("select * from treningsdagbok." + tableName);
 
                     writeMetaData(resultSet);
                     writeResultSet(resultSet);
