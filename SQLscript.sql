@@ -9,6 +9,12 @@ CREATE TABLE `treningsdagbok`.`okt` (
   `form` INT NULL,
   PRIMARY KEY (`oktID`));
 
+CREATE TABLE `treningsdagbok`.`ovelse` (
+  `ovelseID` INT NOT NULL AUTO_INCREMENT,
+  `navn` VARCHAR(45) NULL,
+  `beskrivelse` VARCHAR(450) NULL,
+  PRIMARY KEY (`ovelseID`));
+
 CREATE TABLE `treningsdagbok`.`mal` (
   `oktID` INT NOT NULL,
   `ovelseID` INT NOT NULL,
@@ -85,8 +91,6 @@ CREATE TABLE `treningsdagbok`.`svom` (
 CREATE TABLE `treningsdagbok`.`lop` (
   `tidspunkt` TIME NOT NULL,
   `oktID` INT NOT NULL,
-  `gps1` DOUBLE NULL,
-  `gps2` DOUBLE NULL,
   `antSkritt` INT NULL,
   `hastighet` DOUBLE NULL,
   `lengde` DOUBLE NULL,
@@ -106,10 +110,8 @@ CREATE TABLE `treningsdagbok`.`lop` (
 CREATE TABLE `treningsdagbok`.`sykkel` (
   `tidspunkt` TIME NOT NULL,
   `oktID` INT NOT NULL,
-  `watt` INT NULL,
-  `cadence` INT NULL,
-  `gps1` DOUBLE NULL,
-  `gps2` DOUBLE NULL,
+  `watt` DOUBLE NULL,
+  `cadence` DOUBLE NULL,
   `lengde` DOUBLE NULL,
   `hastighet` DOUBLE NULL,
   `puls` INT NULL,
@@ -176,11 +178,7 @@ CREATE TABLE `treningsdagbok`.`resultat` (
     ON UPDATE NO ACTION);
 
 
-CREATE TABLE `treningsdagbok`.`ovelse` (
-  `ovelseID` INT NOT NULL AUTO_INCREMENT,
-  `navn` VARCHAR(45) NULL,
-  `beskrivelse` VARCHAR(450) NULL,
-  PRIMARY KEY (`ovelseID`));
+
 
 
 CREATE TABLE `treningsdagbok`.`styrkeovelse` (
@@ -194,7 +192,6 @@ CREATE TABLE `treningsdagbok`.`styrkeovelse` (
     REFERENCES `treningsdagbok`.`ovelse` (`ovelseID`)
     ON DELETE CASCADE
     ON UPDATE NO ACTION);
-
 
 CREATE TABLE `treningsdagbok`.`utholdenhetsovelse` (
   `ovelseID` INT NOT NULL,

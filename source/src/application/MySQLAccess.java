@@ -67,7 +67,7 @@ public class MySQLAccess {
 				Time lastKey = new Time(1); 
             	
                 while (resultSet.next()) {
-                	lastKey = resultSet.getTime(1);
+                	lastKey = resultSet.getTime(2);
                 }
                 
             	return lastKey;
