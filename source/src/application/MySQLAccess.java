@@ -220,12 +220,12 @@ public class MySQLAccess {
                     resultSet = statement.executeQuery("select * from treningsdagbok." + tableName);
 
                     writeMetaData(resultSet);
+                    return writeResultSet(resultSet);
                 } catch (Exception e) {
                         throw e;
                 } finally {
                         close();
                 }
-                return writeResultSet(resultSet);
         }
 
         private void writeMetaData(ResultSet resultSet) throws SQLException {
