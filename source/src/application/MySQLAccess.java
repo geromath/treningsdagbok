@@ -206,7 +206,7 @@ public class MySQLAccess {
         
         
         
-        public void readDataBase(String tableName) throws Exception {
+        public ArrayList readDataBase(String tableName) throws Exception {
                 try {
                     // This will load the MySQL driver, each DB has its own driver
                     Class.forName("com.mysql.jdbc.Driver");
@@ -220,13 +220,12 @@ public class MySQLAccess {
                     resultSet = statement.executeQuery("select * from treningsdagbok." + tableName);
 
                     writeMetaData(resultSet);
-                    writeResultSet(resultSet);
                 } catch (Exception e) {
                         throw e;
                 } finally {
                         close();
                 }
-
+                return writeResultSet(resultSet);
         }
 
         private void writeMetaData(ResultSet resultSet) throws SQLException {
@@ -256,24 +255,26 @@ public class MySQLAccess {
         
         
 
-        private void writeResultSet(ResultSet resultSet) throws SQLException {
+        private ArrayList writeResultSet(ResultSet resultSet) throws SQLException {
                 // ResultSet is initially before the first data set
         		
         	ArrayList<String> colName = getMetaData(resultSet);
         	int number_of_cols = colName.size();
         	
+        	ArrayList<String> liste1 = new ArrayList<>();
+        	String okt = "";
             while (resultSet.next()) {
                     // It is possible to get the columns via name
                     // also possible to get the columns via the column number
                     // which starts at 1
 
             	for (int i = 0; i < number_of_cols; i++){
-            		System.out.print(resultSet.getString(colName.get(i)));
-            		System.out.print(" ");
+            		okt += resultSet.getString(colName.get(i));
             	}
-            	System.out.println("");
-
+            	liste1.add(okt);
+            	okt = "";
             }
+			return liste1;
         }
 
         // You need to close the resultSet
