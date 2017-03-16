@@ -99,8 +99,22 @@ public class AddActivityController {
 			Label lbl8 = new Label("Hvilke øvelser har du gjort? (String-liste (separert med ', ')");
 			TextField ovelser = new TextField();
 			Button btn = new Button("Submit");
-			vb.getChildren().addAll(tidspunktStart, dato, varighet, kaloriforbruk, notat, prestasjon, form, 
-					ovelser, btn);
+			vb.getChildren().addAll(lbl1, tidspunktStart,
+					lbl2,
+					dato,
+					lbl3,
+					varighet,
+					lbl4,
+					kaloriforbruk,
+					lbl5,
+					notat,
+					lbl6,
+					prestasjon,
+					lbl7,
+					form,
+					lbl8,
+					ovelser, 
+					btn);
 			btn.setOnAction(new EventHandler<ActionEvent>() {
 	            @Override public void handle(ActionEvent e) {
 	            	Date date = new Date(0);
