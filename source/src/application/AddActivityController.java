@@ -122,11 +122,11 @@ public class AddActivityController {
 		}
 		else if (whatField.getText().equals("historikk")) {
 			Button btn = new Button ("Historikk for siste 30 dager");
-			vb.getChildren().addAll();
+			vb.getChildren().addAll(btn);
 			btn.setOnAction(new EventHandler<ActionEvent>() {
 	            @Override public void handle(ActionEvent e) {
 	                try {
-	                	for(Object okt : read.readDataBase("sisteokt")){
+	                	for(Object okt : read.readDataBase("sisteokter")){
 							Label label = new Label(okt.toString());
 							vb.getChildren().addAll(label);
 							System.out.println(okt.toString());

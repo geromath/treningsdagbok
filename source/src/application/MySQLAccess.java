@@ -221,7 +221,7 @@ public class MySQLAccess {
 
                     writeMetaData(resultSet);
                     return writeResultSet(resultSet);
-                    
+
                 } catch (Exception e) {
                         throw e;
                 } finally {
