@@ -38,13 +38,18 @@ public class AddActivityController {
 	@FXML
 	public void handleTextChange() {
 		if (whatField.getText().equals("styrkeøvelse")) {
+			Label lbl1 = new Label("Navn: (String)");
 			TextField navn = new TextField();
+			Label lbl2 = new Label("Beskrivelse: (String)");
 			TextField beskrivelse = new TextField();
+			Label lbl3 = new Label("Belastning: (int)");
 			TextField belastning = new TextField();
+			Label lbl4 = new Label("Repitisjoner: (int)");
 			TextField repitisjoner = new TextField();
+			Label lbl5 = new Label("Sett: (int)");
 			TextField sett = new TextField();
 			Button btn = new Button("Submit");
-			vb.getChildren().addAll(navn, beskrivelse, belastning, repitisjoner, sett, btn);
+			vb.getChildren().addAll(lbl1, navn, lbl2, beskrivelse, lbl3, belastning, lbl4, repitisjoner, lbl5, sett, btn);
 			btn.setOnAction(new EventHandler<ActionEvent>() {
 	            @Override public void handle(ActionEvent e) {
 	                add.addOvelse(navn.getText(), beskrivelse.getText());
@@ -55,13 +60,18 @@ public class AddActivityController {
 	        });
 		}
 		else if (whatField.getText().equals("utholdenhetsøvelse")) {
+			Label lbl1 = new Label("Navn: (String)");
 			TextField navn = new TextField();
+			Label lbl2 = new Label("Beskrivelse: (String)");
 			TextField beskrivelse = new TextField();
+			Label lbl3 = new Label("Hastighet: (String)");
 			TextField hastighet = new TextField();
+			Label lbl4 = new Label("Pulssone: (String)");
 			TextField pulssone = new TextField();
+			Label lbl5 = new Label("Varighet: (Time (hh:mm:ss))");
 			TextField varighet = new TextField();
 			Button btn = new Button("Submit");
-			vb.getChildren().addAll(navn, beskrivelse, hastighet, pulssone, varighet, btn);
+			vb.getChildren().addAll(lbl1, navn, lbl2, beskrivelse, lbl3, hastighet, lbl4, pulssone, lbl5, varighet, btn);
 			btn.setOnAction(new EventHandler<ActionEvent>() {
 	            @Override public void handle(ActionEvent e) {
 	            	add.addOvelse(navn.getText(), beskrivelse.getText());
@@ -72,13 +82,21 @@ public class AddActivityController {
 	        });
 		}
 		else if (whatField.getText().equals("økt")) {
+			Label lbl1 = new Label("Tidspunkt Start: (Time (hh:mm:ss))");
 			TextField tidspunktStart = new TextField();
+			Label lbl2 = new Label("Dato: (Date (yyyyMMdd))");
 			TextField dato = new TextField();
+			Label lbl3 = new Label("Varighet: (Time (hh:mm:ss))");
 			TextField varighet = new TextField();
+			Label lbl4 = new Label("Kaloriforbruk: (int)");
 			TextField kaloriforbruk = new TextField();
+			Label lbl5 = new Label("Notat: (String)");
 			TextField notat = new TextField();
+			Label lbl6 = new Label("Prestasjon: (int)");
 			TextField prestasjon = new TextField();
+			Label lbl7 = new Label("Form: (int)");
 			TextField form = new TextField();
+			Label lbl8 = new Label("Hvilke øvelser har du gjort? (String-liste (separert med ', ')");
 			TextField ovelser = new TextField();
 			Button btn = new Button("Submit");
 			vb.getChildren().addAll(tidspunktStart, dato, varighet, kaloriforbruk, notat, prestasjon, form, 
