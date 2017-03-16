@@ -27,8 +27,7 @@ public class Main extends Application {
 //		MySQLAccess sql = new MySQLAccess();
 //        sql.readDataBase("ovelse");
         
-//      sql.writeDataBase("Testøvelse", "Dette er en test");
-//      sql.readDataBase();
+//		sql.readDataBase("sisteokter");
 		launch(args);
 	}
 }
